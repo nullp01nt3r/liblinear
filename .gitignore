@@ -1,0 +1,6 @@
+/blas/*.o
+/blas/*.a
+/*.o
+/predict
+/train
+/*.linear_model
