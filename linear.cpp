@@ -3069,9 +3069,7 @@ const char *check_parameter(const problem *prob, const parameter *param)
 
 int check_probability_model(const struct model *model_)
 {
-	return (model_->param.solver_type==L2R_LR ||
-			model_->param.solver_type==L2R_LR_DUAL ||
-			model_->param.solver_type==L1R_LR);
+	return 1;
 }
 
 int check_regression_model(const struct model *model_)
