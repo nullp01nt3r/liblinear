@@ -4,6 +4,7 @@
 #include <string.h>
 #include <errno.h>
 #include "linear.h"
+#include "eval.h"
 
 int print_null(const char *s,...) {return 0;}
 
@@ -232,7 +233,7 @@ int main(int argc, char **argv)
 	}
 
 	x = (struct feature_node *) malloc(max_nr_attr*sizeof(struct feature_node));
-	do_predict(input, output);
+	binary_class_predict(input, output);
 	free_and_destroy_model(&model_);
 	free(line);
 	free(x);

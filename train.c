@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include "linear.h"
+#include "eval.h"
 #define Malloc(type,n) (type *)malloc((n)*sizeof(type))
 #define INF HUGE_VAL
 
@@ -120,7 +121,8 @@ int main(int argc, char **argv)
 	}
 	else if(flag_cross_validation)
 	{
-		do_cross_validation();
+		double cv =  binary_class_cross_validation(&prob, &param, nr_fold);
+		printf("Cross Validation = %g%%\n",100.0*cv);
 	}
 	else
 	{
