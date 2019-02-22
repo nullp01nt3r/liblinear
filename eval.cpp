@@ -14,6 +14,7 @@ typedef std::vector<int>    ivec_t;
 // prototypes of evaluation functions
 double precision(const dvec_t& dec_values, const ivec_t& ty);
 double recall(const dvec_t& dec_values, const ivec_t& ty);
+double precision_and_recall(const dvec_t& dec_values, const ivec_t& ty);
 double fscore(const dvec_t& dec_values, const ivec_t& ty);
 double bac(const dvec_t& dec_values, const ivec_t& ty);
 double auc(const dvec_t& dec_values, const ivec_t& ty);
@@ -21,7 +22,7 @@ double accuracy(const dvec_t& dec_values, const ivec_t& ty);
 
 // evaluation function pointer
 // You can assign this pointer to any above prototype
-double (*validation_function)(const dvec_t&, const ivec_t&) = recall;
+double (*validation_function)(const dvec_t&, const ivec_t&) = precision_and_recall;
 
 
 static char *line = NULL;
@@ -46,7 +47,10 @@ static char* readline(FILE *input)
 	return line;
 }
 
-
+double precision_and_recall(const dvec_t& dec_values, const ivec_t& ty){
+	recall(dec_values, ty);
+	return precision(dec_values, ty);
+}
 
 double precision(const dvec_t& dec_values, const ivec_t& ty){
 	size_t size = dec_values.size();
